@@ -1,0 +1,33 @@
+FROM python:3.13-alpine
+
+# Install dependencies for Chromium & Playwright
+RUN apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ttf-freefont \
+    mesa-gl \
+    libx11 \
+    libxcomposite \
+    libxdamage \
+    libxext \
+    libxi \
+    libxtst \
+    libxrandr \
+    alsa-lib \
+    bash \
+    curl \
+    libc6-compat
+
+# Install pip packages
+RUN pip install --no-cache-dir playwright
+
+# Install Playwright browsers
+RUN playwright install chromium
+
+WORKDIR /app
+
+COPY main.py .
+
+CMD ["python", "main.py"]
