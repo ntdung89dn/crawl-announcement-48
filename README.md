@@ -11,10 +11,12 @@ Install in local
  #OR 
  $pip install playwright asyncio
  $playwright install
+```
 
 ## Running file:
 ```bash
 python main.py
+```
 
 ## Build Docker Image
 
